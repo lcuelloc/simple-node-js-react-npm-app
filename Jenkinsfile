@@ -1,3 +1,6 @@
+@Library('delete-build')
+def pipeline = new killOldBuilds()
+
 pipeline {
     agent {
         docker {
@@ -28,3 +31,6 @@ pipeline {
         }
     }
 }
+
+stage 'Purge'
+pipeline.killOldBuilds()
