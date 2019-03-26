@@ -1,5 +1,4 @@
-@Library('delete-build')
-def pipeline = new killOldBuilds()
+@Library('delete-build')_
 
 pipeline {
     agent {
@@ -32,5 +31,7 @@ pipeline {
     }
 }
 
-stage 'Purge'
-pipeline.killOldBuilds()
+stage('Purge') {
+    killOldBuilds()
+}
+
