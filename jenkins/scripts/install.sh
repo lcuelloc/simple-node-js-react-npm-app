@@ -1,3 +1,3 @@
 echo 'Install all node dependencies'
 
-npm install
+docker exec -ti node-server npm install
