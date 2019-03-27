@@ -2,6 +2,7 @@ pipeline {
     agent {
     	docker {
     		image 'node:6-alpine'
+            args '-p 3000:3000 --name node-server'
     	}
     }
 
@@ -17,7 +18,6 @@ pipeline {
         }
         stage('Build') {
             steps {
-            	sh 'docker run -p 3000:3000 --name node-server image node:6-alpine'
                 sh 'npm install'
             }
         }
