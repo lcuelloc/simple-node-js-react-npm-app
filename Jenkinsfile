@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'docker exec -ti node-server npm install'
+                sh 'docker exec node-server npm install'
             }
         }
         stage('Deliver') {
