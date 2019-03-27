@@ -9,10 +9,14 @@ pipeline {
         CI = 'true'
     }
     stages {
-        stage('Build') {
+        stage('Remove Container') {
             steps {
                 sh 'docker ps -f name=node-server -q | xargs --no-run-if-empty docker container stop'
                 sh 'docker container ls -a -fname=node-server -q | xargs -r docker container rm'
+            }
+        }
+        stage('Build') {
+            steps {
                 sh 'npm install'
             }
         }
