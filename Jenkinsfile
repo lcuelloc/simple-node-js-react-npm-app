@@ -1,25 +1,15 @@
 pipeline {
-    agent { 
-	    label 'dockerserver' 
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000 --name node-server'
+        }
     }
     environment {
         CI = 'true'
     }
     stages {
-        stage('Remove Container') {
-        	agent {
-        		docker{
-        			args 'docker ps -f name=node-server -q | xargs --no-run-if-empty docker container stop'
-        		}
-        	}
-        }
         stage('Build') {
-        	agent {
-		    	docker {
-		    		image 'node:6-alpine'
-		    		args '-p 3000:3000 --name node-server'
-		    	}
-		    }
             steps {
                 sh 'npm install'
             }
