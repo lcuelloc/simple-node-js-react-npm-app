@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'node:6-alpine'
-            args '--rm -p 3000:3000 --name node-server'
+            args '-p 3000:3000 --name node-server'
         }
     }
     environment {
@@ -11,6 +11,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh './jenkins/scripts/kill.sh'
                 sh 'npm install'
             }
         }
