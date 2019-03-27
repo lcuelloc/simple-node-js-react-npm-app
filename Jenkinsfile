@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         CI = 'true'
+        HOME = '.'
     }
     stages {
         stage('Build') {
