@@ -1,5 +1,3 @@
-@Library('delete-build')_
-
 pipeline {
     agent {
         docker {
@@ -30,8 +28,3 @@ pipeline {
         }
     }
 }
-
-stage('Purge') {
-    killOldBuilds()
-}
-
