@@ -8,7 +8,6 @@ pipeline {
                 sh 'docker ps -f name=node-server -q | xargs --no-run-if-empty docker container stop'
                 sh 'docker container ls -a -fname=node-server -q | xargs -r docker container rm'
                 sh 'docker run -p 3000:3000 --name node-server node:6-alpine'
-                sh 'docker run '
                 sh 'npm install'
             }
         }
