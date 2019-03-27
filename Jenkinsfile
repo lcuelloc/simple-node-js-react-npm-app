@@ -8,7 +8,7 @@ pipeline {
             steps {
                 sh './jenkins/scripts/remove-docker.sh'
                 sh './jenkins/scripts/run-docker.sh'
-                sh 'npm install'
+                sh './jenkins/scripts/install.sh'
             }
         }
         stage('Deliver') {
