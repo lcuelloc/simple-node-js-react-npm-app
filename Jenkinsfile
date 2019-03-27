@@ -1,5 +1,7 @@
 pipeline {
-    agent { label 'dockerserver' }
+    agent { 
+	    label 'dockerserver' 
+    }
     environment {
         CI = 'true'
     }
