@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'docker exec -ti node-server ./jenkins/scripts/install.sh'
+                sh 'docker exec -ti node-server npm install'
             }
         }
         stage('Deliver') {
