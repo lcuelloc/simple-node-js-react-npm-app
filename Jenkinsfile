@@ -12,7 +12,7 @@ pipeline {
         CI = 'true'
     }
     stages {
-        stages('Clean') {
+        stage('Clean') {
             steps {
                 sh './jenkins/scripts/remove-docker.sh'
                 sh './jenkins/scripts/run-docker.sh'
