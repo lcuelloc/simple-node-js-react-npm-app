@@ -1,15 +1,26 @@
 pipeline {
-    agent any
+	agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000 --name node-server'
+        }
+    }
+    options {
+        skipDefaultCheckout true
+    }
     environment {
         CI = 'true'
-        HOME = '.'
     }
     stages {
-        stage('Build') {
+        stages('Clean') {
             steps {
                 sh './jenkins/scripts/remove-docker.sh'
                 sh './jenkins/scripts/run-docker.sh'
-                sh './jenkins/scripts/install.sh'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm install'
             }
         }
         stage('Deliver') {
